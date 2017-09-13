@@ -1,0 +1,22 @@
+{{outlet}}
+<div class="container">
+	<div class="jumbo">
+		<div class="right tomster"></div>
+		{{#if isAuthenticated}}
+			<h3>You are already logged in.</h3>
+			<button class="button" {{action 'onLogoutClick'}}>Logout</button>
+		{{else}}
+			<div class="formbox">
+			<label><b>Username</b></label>
+			{{input type="text" placeholder="Enter Username" class="loginBox" value=userName}}
+
+			<label><b>Password</b></label>
+			{{input type="password" placeholder="Enter Password" class="loginBox" value=password}}
+			   
+
+			<button class="button" {{action 'onLoginClick'}}>Login</button>
+		</div>
+
+	{{/if}}
+	</div>
+</div>

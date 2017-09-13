@@ -1,0 +1,9 @@
+{{yield}}
+{{#if displayErrors}}
+	{{#each errors as |error|}}
+			{{debugger}}
+			{{#each error.message as |message|}}
+				<p style="color:red;">{{message}}</p>
+			{{/each}}	
+	{{/each}}
+{{/if}}

@@ -1,0 +1,59 @@
+{{outlet}}
+<form>
+<div class="jumbo">
+	<h1 class="sub-title">Add New Rental</h1>
+
+	<div class="formbox">
+		<label><b>Title of Rental</b></label>
+		{{input type="text" value=model.title placeholder="title"}}
+		<small>
+			{{show-errors errors=model.errors.title displayErrors=displayErrors}}
+		</small>
+
+		<label><b>Owner Name</b></label>
+		{{input type="text" value=model.owner placeholder="name"}}
+		<small>
+			{{show-errors errors=model.errors.owner displayErrors=displayErrors}}
+		</small>
+
+		<label><b>Type</b></label>
+		{{#power-select
+		  selected=selectedPropertyType
+		  options=propertyTypes
+		  placeholder="Select a property type"
+		  onchange=(action "onPropertyTypeSelect")
+		  as |name|
+		}}
+		  {{name}}
+		{{/power-select}}
+		<small>
+			{{show-errors errors=model.errors.propertyType displayErrors=displayErrors}}
+		</small>
+
+
+		<label><b>Location</b></label>
+		{{#power-select
+		  selected=selectedCity
+		  options=cities
+		  placeholder="Select a location"
+		  onchange=(action "onCitySelect")
+		  as |name|
+		}}
+		  {{name}}
+		{{/power-select}}
+		<small>
+			{{show-errors errors=model.errors.city displayErrors=displayErrors}}
+		</small>
+
+		<label><b>No of bedrooms</b></label>
+		{{input type="text" value=model.bedrooms placeholder="number"}}
+		
+		<label><b>Description</b></label>
+		{{input type="text" value=model.description placeholder="description"}}
+		  
+
+		<button role="button" class="button" {{action "discardRental"}}> {{ loc "Discard"}}</button>&nbsp;&nbsp;
+	    <button class="button t_btnAddUserSave" role="button" {{action "saveRental"}}>{{ loc "Save"}}</button>
+	</div>
+</div>
+</form>
